@@ -1,5 +1,7 @@
 package com.fiap.vaccinationCard.entities;
 
+import com.fiap.vaccinationCard.entities.enums.Status;
+
 import javax.persistence.*;
 
 @Entity
@@ -94,5 +96,19 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", street='" + street + '\'' +
+                ", number=" + number +
+                ", zipCode=" + zipCode +
+                ", complement='" + complement + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

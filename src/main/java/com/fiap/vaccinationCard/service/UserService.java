@@ -24,4 +24,8 @@ public class UserService {
     public User getByIdUser(Long id) {
         return repository.getById(id);
     }
+
+    public User getUserVaccines(Long id) {
+        return repository.UserVaccines(id);
+    }
 }

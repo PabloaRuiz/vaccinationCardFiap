@@ -1,5 +1,8 @@
 package com.fiap.vaccinationCard.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fiap.vaccinationCard.entities.enums.Status;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,7 +15,11 @@ public class Vaccine {
     @Column(name ="vaccine_id")
     private Long id;
     private String name;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "UTC")
     private LocalDate application;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "UTC")
     private LocalDate validity;
 
     public Vaccine() {
@@ -55,5 +62,25 @@ public class Vaccine {
 
     public void setValidity(LocalDate validity) {
         this.validity = validity;
+    }
+
+
+    public Status getShelfLife() {
+        if (getValidity().isBefore(LocalDate.now())) {
+            return Status.VENCIDA;
+        } else {
+            return  Status.EM_DIA;
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return "Vaccine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", application=" + application +
+                ", validity=" + validity +
+                '}';
     }
 }

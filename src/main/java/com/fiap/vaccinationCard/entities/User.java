@@ -1,5 +1,7 @@
 package com.fiap.vaccinationCard.entities;
 
+import com.fiap.vaccinationCard.entities.enums.Status;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class User {
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "vaccine_id"),
             name = "tb_user_vaccine")
-    private List<Vaccine> vaccines = new ArrayList<Vaccine>();
+    private List<Vaccine> vaccines = new ArrayList<>();
 
     public User() {
     }
