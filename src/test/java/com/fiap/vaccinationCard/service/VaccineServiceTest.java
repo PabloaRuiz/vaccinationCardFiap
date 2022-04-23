@@ -1,10 +1,9 @@
 package com.fiap.vaccinationCard.service;
 
 
-import com.fiap.vaccinationCard.entities.Address;
-import com.fiap.vaccinationCard.entities.User;
 import com.fiap.vaccinationCard.entities.Vaccine;
 import com.fiap.vaccinationCard.repository.VaccineRepository;
+import com.fiap.vaccinationCard.repository.VaccineRepositoryTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -68,6 +67,7 @@ public class VaccineServiceTest {
         Assertions.assertThat(getVaccine.getApplication()).isEqualTo(vaccine.getApplication());
         Assertions.assertThat(getVaccine.getValidity()).isEqualTo(LocalDate.of(2024,04,15));
     }
+
 
 }
 

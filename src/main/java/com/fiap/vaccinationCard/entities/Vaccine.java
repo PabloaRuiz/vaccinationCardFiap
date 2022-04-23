@@ -22,6 +22,7 @@ public class Vaccine {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "UTC")
     private LocalDate validity;
 
+
     public Vaccine() {
     }
 
@@ -72,7 +73,6 @@ public class Vaccine {
             return  Status.EM_DIA;
         }
     }
-
 
     @Override
     public String toString() {

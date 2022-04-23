@@ -5,7 +5,6 @@ import com.fiap.vaccinationCard.entities.Address;
 import com.fiap.vaccinationCard.entities.User;
 import com.fiap.vaccinationCard.entities.Vaccine;
 import com.fiap.vaccinationCard.repository.UserRepository;
-import com.fiap.vaccinationCard.repository.VaccineRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,8 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 public class UserServiceTest {
@@ -35,7 +32,7 @@ public class UserServiceTest {
     }
 
     private User createUser() {
-        return new User(null, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04));
+        return new User(null, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04), "Evelyn@Fiap.com.br");
     }
 
     private Address createAddress() {
@@ -53,7 +50,7 @@ public class UserServiceTest {
         User user = createUser();
 
         Mockito.when(repository.save(user))
-                .thenReturn(new User(1l, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04)));
+                .thenReturn(new User(1l, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04), "Evelyn@Fiap.com.br"));
 
 
         User registeredUser = service.saveUser(user);
@@ -72,7 +69,7 @@ public class UserServiceTest {
         user.setId(1l);
 
         Mockito.when(repository.getById(user.getId()))
-                .thenReturn(new User(1l, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04)));
+                .thenReturn(new User(1l, "Evelyn Fiap dos Santos", "449.513.685.98", LocalDate.of(1989, 12, 04), "Evelyn@Fiap.com.br"));
 
 
         User getUser = service.getByIdUser(user.getId());

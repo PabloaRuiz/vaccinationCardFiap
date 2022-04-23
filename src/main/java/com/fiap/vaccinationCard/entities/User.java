@@ -1,9 +1,9 @@
 package com.fiap.vaccinationCard.entities;
 
-import com.fiap.vaccinationCard.entities.enums.Status;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +18,7 @@ public class User {
     private String name;
     private String document;
     private LocalDate dateOfBirth;
+    private String email;
 
     @OneToOne
     @JoinColumn(name ="address_id")
@@ -32,11 +33,12 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String document, LocalDate dateOfBirth) {
+    public User(Long id, String name, String document, LocalDate dateOfBirth, String email) {
         this.id = id;
         this.name = name;
         this.document = document;
         this.dateOfBirth = dateOfBirth;
+        this.email = email;
     }
 
     public Long getId() {
@@ -90,5 +92,28 @@ public class User {
 
     public void addVaccines(Vaccine vaccine) {
         this.vaccines.add(vaccine);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public int getAge() {
+        return Period.between(getDateOfBirth(), LocalDate.now()).getYears();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", document='" + document + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address=" + address +
+                ", vaccines=" + vaccines +
+                '}';
     }
 }

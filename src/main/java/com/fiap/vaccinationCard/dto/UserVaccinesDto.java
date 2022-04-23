@@ -17,8 +17,18 @@ public class UserVaccinesDto {
     @JsonProperty("Nome")
     private String name;
 
+    @JsonProperty("Idade")
+    private int Age;
+
     @JsonProperty("CPF")
     private String document;
+
+
+    @JsonProperty("E-mail")
+    private String email;
+
+    @JsonProperty("Cidade")
+    private String city;
 
     @JsonProperty("Bairro")
     private String district;
@@ -32,19 +42,29 @@ public class UserVaccinesDto {
     @JsonProperty("CEP")
     private Integer zipCode;
 
+    @JsonProperty("Complemento")
+    private String complement;
+
+    @JsonProperty("UF")
+    private String state;
+
     @JsonProperty("Vacinas")
     private List<Vaccine> vaccines;
 
 
-
-    public UserVaccinesDto convertCustomer (User user) {
+    public UserVaccinesDto convertCustomer(User user) {
         return new UserVaccinesDto(
                 user.getName(),
+                user.getAge(),
                 user.getDocument(),
+                user.getEmail(),
+                user.getAddress().getCity(),
                 user.getAddress().getDistrict(),
                 user.getAddress().getStreet(),
                 user.getAddress().getNumber(),
                 user.getAddress().getZipCode(),
+                user.getAddress().getComplement(),
+                user.getAddress().getState(),
                 user.getVaccines());
     }
 }

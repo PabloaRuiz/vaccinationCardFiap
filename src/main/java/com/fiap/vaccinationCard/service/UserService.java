@@ -1,11 +1,15 @@
 package com.fiap.vaccinationCard.service;
 
 
-import com.fiap.vaccinationCard.entities.Address;
 import com.fiap.vaccinationCard.entities.User;
+import com.fiap.vaccinationCard.entities.Vaccine;
 import com.fiap.vaccinationCard.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Service
 public class UserService {
@@ -28,4 +32,6 @@ public class UserService {
     public User getUserVaccines(Long id) {
         return repository.UserVaccines(id);
     }
+
+
 }
